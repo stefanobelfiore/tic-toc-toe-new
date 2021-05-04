@@ -5,6 +5,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
+import PropTypes from "prop-types";
+
 function MyModal(props) {
 	return (
 		<Modal {...props} aria-labelledby="contained-modal-title-vcenter">
@@ -15,23 +17,28 @@ function MyModal(props) {
 			</Modal.Header>
 			<Modal.Body className="show-grid">
 				<Container>
-					<Row>
-						<Col xs={12} md={8}>
-							.col-xs-12 .col-md-8
-						</Col>
-						<Col xs={6} md={4}>
-							.col-xs-6 .col-md-4
-						</Col>
-					</Row>
-
-					<Row>
-						<Col xs={6} md={6}>
-							.col-xs-6 .col-md-4
-						</Col>
-						<Col xs={6} md={6}>
-							.col-xs-6 .col-md-4
-						</Col>
-					</Row>
+					<form action="input">
+						<Row>
+							<Col md={6}>
+								<input
+									type="text"
+									placeholder="Jugador 1 (X)"></input>
+							</Col>
+							<Col md={6}>
+								<input
+									type="text"
+									placeholder="Jugador 2 (O)"></input>
+							</Col>
+						</Row>
+						<Row>
+							<Col xs={6} md={6}>
+								<div className="x">X</div>
+							</Col>
+							<Col xs={6} md={6}>
+								<div className="o">O</div>
+							</Col>
+						</Row>
+					</form>
 				</Container>
 			</Modal.Body>
 			<Modal.Footer>
@@ -41,8 +48,8 @@ function MyModal(props) {
 	);
 }
 
-export function App() {
-	const [modalShow, setModalShow] = useState(false);
+const App = () => {
+	const [modalShow, setModalShow] = useState(true);
 
 	return (
 		<>
@@ -53,6 +60,12 @@ export function App() {
 			<MyModal show={modalShow} onHide={() => setModalShow(false)} />
 		</>
 	);
-}
+};
 
-render(<App />);
+export default App;
+
+MyModal.propTypes = {
+	onHide: PropTypes.func
+};
+
+//reactDOM.renderDOM(<App />);

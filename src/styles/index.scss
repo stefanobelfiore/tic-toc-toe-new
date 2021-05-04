@@ -11,3 +11,15 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+body{
+    background-color: darkslategray;
+}
+
+.square{
+    height: 5rem;
+    width: 5rem;
+    border: solid white;
+    border-width: 0.5rem;
+    background-color: darkslategray;
+    color: white;
+}
