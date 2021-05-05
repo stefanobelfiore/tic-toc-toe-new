@@ -18,11 +18,12 @@ body{
 .square{
     height: 10rem;
     border: solid white;
-    border-width: 0.5rem;
+    border-width: 0.1rem;
     background-color: darkslategray;
     color: white;
     font-size: 7rem;
     margin: auto;
+    padding:0;
 }
 .container{
     margin-top: 2rem;
