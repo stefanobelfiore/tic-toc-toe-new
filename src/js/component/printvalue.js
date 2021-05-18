@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 const PrintValue = props => {
-	const [value, setValue] = useState("polla");
+	const [value, setValue] = useState(undefined);
 	let print = "";
-	//let check = 0;
-	if (value == true /*&& check == 0*/) {
-		print = "X";
-		//check = check + 1;
+	if (value == true) {
+		print = "fas fa-sun";
 	}
-	if (value == false /*&& check == 0*/) {
-		print = "O";
-		//check = check + 1;
+	if (value == false) {
+		print = "fas fa-moon";
 	}
 	return (
-		<div className="value" onClick={props.onClick}>
-			{print}
+		<div className="value" onClick={() => setValue(props.value)}>
+			<i className={print}></i>
 		</div>
 	);
 };
 export default PrintValue;
 
 PrintValue.propTypes = {
-	value: PropTypes.bool,
-	onClick: PropTypes.func
+	value: PropTypes.bool
 };

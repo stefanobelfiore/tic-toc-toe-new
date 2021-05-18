@@ -1,29 +1,12 @@
 import React, { useState } from "react";
-import PropTypes, { func } from "prop-types";
+import PropTypes from "prop-types";
 import PrintValue from "./printvalue.js";
 
 const Board = () => {
 	const [value, setValue] = useState(true);
-	const [allValues, setAllValues] = useState([
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		""
-	]);
-	//let allValues = ["", "", "", "", "", "", "", "", ""];
 
 	function changeValue(position) {
-		/*if (value == true) {setValue(false);}
-		if (value == false) {setValue(true);}*/
 		setValue(!value);
-		//allValues[position] = value;
-		//setAllValues((allValues[position] = "polla"));
-		console.log(value);
 	}
 
 	return (
