@@ -11,6 +11,7 @@ const Board = () => {
 
 	return (
 		<div className="container">
+			<h1 className={value ? "fas fa-sun" : "fas fa-moon"}></h1>
 			<div className="row">
 				<div
 					className="col-4 square"

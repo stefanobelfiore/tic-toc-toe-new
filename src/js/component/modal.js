@@ -47,9 +47,13 @@ const App = () => {
 
 	return (
 		<>
-			<Button variant="danger" onClick={() => setModalShow(true)}>
-				Game over! / New game
-			</Button>
+			<div className="d-flex justify-content-between">
+				<h1>lalala</h1>
+				<Button variant="danger" onClick={() => setModalShow(true)}>
+					New game
+				</Button>
+				<h1>lalala</h1>
+			</div>
 
 			<MyModal show={modalShow} onHide={() => setModalShow(false)} />
 		</>

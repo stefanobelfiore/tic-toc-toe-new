@@ -5,12 +5,17 @@ const PrintValue = props => {
 	let print = "";
 	if (value == true) {
 		print = "fas fa-sun";
-	}
-	if (value == false) {
+	} else if (value == false) {
 		print = "fas fa-moon";
 	}
 	return (
-		<div className="value" onClick={() => setValue(props.value)}>
+		<div
+			className="value"
+			onClick={() => {
+				if (print == "") {
+					setValue(props.value);
+				}
+			}}>
 			<i className={print}></i>
 		</div>
 	);
