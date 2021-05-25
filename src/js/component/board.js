@@ -20,7 +20,9 @@ const Board = () => {
 
 	return (
 		<div className="container">
-			<h1 className={value ? "fas fa-sun" : "fas fa-moon"}></h1>
+			<h1 className={value ? "fas fa-sun" : "fas fa-moon"}>
+				<h1>{value ? "es el turno de sol" : "es el turno de luna"}</h1>
+			</h1>
 			<div className="row">
 				<div
 					className="col-4 square"
