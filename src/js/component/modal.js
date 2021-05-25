@@ -49,7 +49,11 @@ const App = () => {
 		<>
 			<div className="d-flex justify-content-between">
 				<h1>lalala</h1>
-				<Button variant="danger" onClick={() => setModalShow(true)}>
+				<Button
+					variant="danger"
+					onClick={() => {
+						window.location.reload(false);
+					}}>
 					New game
 				</Button>
 				<h1>lalala</h1>
