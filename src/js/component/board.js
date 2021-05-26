@@ -24,130 +24,32 @@ const Board = () => {
 		"",
 		""
 	]);
+	const [winner, setWinner] = useState(null);
 
-	useEffect(() => {
-		for (let i in positions) {
+	function calculateWinner(squares) {
+		const lines = [
+			[0, 1, 2],
+			[3, 4, 5],
+			[6, 7, 8],
+			[0, 3, 6],
+			[1, 4, 7],
+			[2, 5, 8],
+			[0, 4, 8],
+			[2, 4, 6]
+		];
+		for (let i = 0; i < lines.length; i++) {
+			const [a, b, c] = lines[i];
 			if (
-				(positions[0] == true) &
-				(positions[1] == true) &
-				(positions[2] == true)
+				squares[a] &&
+				squares[a] === squares[b] &&
+				squares[a] === squares[c]
 			) {
-				console.log("cazzooooooooooooo");
-			}
-			if (
-				(positions[3] == true) &
-				(positions[4] == true) &
-				(positions[5] == true)
-			) {
-				console.log("cazzooooooooooooo");
-			}
-			if (
-				(positions[6] == true) &
-				(positions[7] == true) &
-				(positions[8] == true)
-			) {
-				console.log("cazzooooooooooooo");
-			}
-			if (
-				(positions[0] == true) &
-				(positions[3] == true) &
-				(positions[6] == true)
-			) {
-				console.log("cazzooooooooooooo");
-			}
-			if (
-				(positions[1] == true) &
-				(positions[4] == true) &
-				(positions[7] == true)
-			) {
-				console.log("cazzooooooooooooo");
-			}
-			if (
-				(positions[2] == true) &
-				(positions[5] == true) &
-				(positions[8] == true)
-			) {
-				console.log("cazzooooooooooooo");
-			}
-			if (
-				(positions[0] == true) &
-				(positions[4] == true) &
-				(positions[8] == true)
-			) {
-				console.log("cazzooooooooooooo");
-			}
-			if (
-				(positions[2] == true) &
-				(positions[4] == true) &
-				(positions[6] == true)
-			) {
-				console.log("cazzooooooooooooo");
+				return squares[a];
 			}
 		}
-	}, [value]);
+		return null;
+	}
 
-	// useEffect(() => {
-	// 	for (let i in positions) {
-	// 		if (
-	// 			(positions[0] == false) &
-	// 			(positions[1] == false) &
-	// 			(positions[2] == false)
-	// 		) {
-	// 			console.log(positions);
-	// 		}
-	// 		if (
-	// 			(positions[3] == false) &
-	// 			(positions[4] == false) &
-	// 			(positions[5] == false)
-	// 		) {
-	// 			console.log(positions);
-	// 		}
-	// 		if (
-	// 			(positions[6] == false) &
-	// 			(positions[7] == false) &
-	// 			(positions[8] == false)
-	// 		) {
-	// 			console.log(positions);
-	// 		}
-	// 		if (
-	// 			(positions[0] == false) &
-	// 			(positions[3] == false) &
-	// 			(positions[6] == false)
-	// 		) {
-	// 			console.log(positions);
-	// 		}
-	// 		if (
-	// 			(positions[1] == false) &
-	// 			(positions[4] == false) &
-	// 			(positions[7] == false)
-	// 		) {
-	// 			console.log(positions);
-	// 		}
-	// 		if (
-	// 			(positions[2] == false) &
-	// 			(positions[5] == false) &
-	// 			(positions[8] == false)
-	// 		) {
-	// 			console.log(positions);
-	// 		}
-	// 		if (
-	// 			(positions[0] == false) &
-	// 			(positions[4] == false) &
-	// 			(positions[8] == false)
-	// 		) {
-	// 			console.log(positions);
-	// 		}
-	// 		if (
-	// 			(positions[2] == false) &
-	// 			(positions[4] == false) &
-	// 			(positions[6] == false)
-	// 		) {
-	// 			console.log(positions);
-	// 		}
-	// 	}
-	// }, [positions]);
-
-	return (
 		<div className="container">
 			<h1 className={value ? "fas fa-sun" : "fas fa-moon"}>
 				<h1>{value ? "es el turno de sol" : "es el turno de luna"}</h1>
@@ -160,6 +62,8 @@ const Board = () => {
 							setValue(!value);
 							setValue1(true);
 							positions.splice(0, 1, value);
+							calculateWinner(positions);
+							console.log(winner);
 						}
 					}}>
 					<PrintValue value={value} />
@@ -171,6 +75,8 @@ const Board = () => {
 							setValue(!value);
 							setValue2(true);
 							positions.splice(1, 1, value);
+							calculateWinner(positions);
+							console.log(winner);
 						}
 					}}>
 					<PrintValue value={value} />
@@ -182,6 +88,8 @@ const Board = () => {
 							setValue(!value);
 							setValue3(true);
 							positions.splice(2, 1, value);
+							calculateWinner(positions);
+							console.log(winner);
 						}
 					}}>
 					<PrintValue value={value} />
@@ -195,6 +103,8 @@ const Board = () => {
 							setValue(!value);
 							setValue4(true);
 							positions.splice(3, 1, value);
+							calculateWinner(positions);
+							console.log(winner);
 						}
 					}}>
 					<PrintValue value={value} />
@@ -206,6 +116,8 @@ const Board = () => {
 							setValue(!value);
 							setValue5(true);
 							positions.splice(4, 1, value);
+							calculateWinner(positions);
+							console.log(winner);
 						}
 					}}>
 					<PrintValue value={value} />
@@ -217,6 +129,8 @@ const Board = () => {
 							setValue(!value);
 							setValue6(true);
 							positions.splice(5, 1, value);
+							calculateWinner(positions);
+							console.log(winner);
 						}
 					}}>
 					<PrintValue value={value} />
@@ -230,6 +144,9 @@ const Board = () => {
 							setValue(!value);
 							setValue7(true);
 							positions.splice(6, 1, value);
+							calculateWinner(positions);
+
+							console.log(winner);
 						}
 					}}>
 					<PrintValue value={value} />
@@ -241,6 +158,9 @@ const Board = () => {
 							setValue(!value);
 							setValue8(true);
 							positions.splice(7, 1, value);
+							calculateWinner(positions);
+
+							console.log(winner);
 						}
 					}}>
 					<PrintValue value={value} />
@@ -252,6 +172,9 @@ const Board = () => {
 							setValue(!value);
 							setValue9(true);
 							positions.splice(8, 1, value);
+							calculateWinner(positions);
+
+							console.log(winner);
 						}
 					}}>
 					<PrintValue value={value} />

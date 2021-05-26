@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 const PrintValue = props => {
-	const [value, setValue] = useState(undefined);
+	const [value, setValue] = useState(null);
 	let print = "";
 	if (value == true) {
 		print = "fas fa-sun";
