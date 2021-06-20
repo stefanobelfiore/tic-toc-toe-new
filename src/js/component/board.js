@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import PrintValue from "./printvalue.js";
+import { Alert } from "bootstrap";
 
 const Board = () => {
 	const [value, setValue] = useState(true);
@@ -24,32 +25,58 @@ const Board = () => {
 		"",
 		""
 	]);
-	const [winner, setWinner] = useState(null);
+	const turnOffBoard = () => {
+		setValue(null);
+		setValue(null);
+		setValue(null);
+		setValue(null);
+		setValue(null);
+		setValue(null);
+		setValue(null);
+		setValue(null);
+		setValue(null);
+	};
+	const winPositions = [
+		[0, 1, 2],
+		[3, 4, 5],
+		[6, 7, 8],
+		[0, 3, 6],
+		[1, 4, 7],
+		[2, 5, 8],
+		[0, 4, 8],
+		[2, 4, 6]
+	];
 
-	function calculateWinner(squares) {
-		const lines = [
-			[0, 1, 2],
-			[3, 4, 5],
-			[6, 7, 8],
-			[0, 3, 6],
-			[1, 4, 7],
-			[2, 5, 8],
-			[0, 4, 8],
-			[2, 4, 6]
-		];
-		for (let i = 0; i < lines.length; i++) {
-			const [a, b, c] = lines[i];
-			if (
-				squares[a] &&
-				squares[a] === squares[b] &&
-				squares[a] === squares[c]
-			) {
-				return squares[a];
+	const calculateWinner = array => {
+		for (let index = 0; index < winPositions.length; index++) {
+			for (let indexWin = 0; indexWin < 3; indexWin++) {
+				if (
+					array[winPositions[index][0]].includes("SOL") &&
+					array[winPositions[index][1]].includes("SOL") &&
+					array[winPositions[index][2]].includes("SOL")
+				) {
+					alert(
+						"HA GANADO SOL!!!! ENHORABUENA!!!!!!!!!! Pulse New Game para empezar otro partido"
+					);
+					turnOffBoard();
+				} else if (
+					array[winPositions[index][0]].includes("LUNA") &&
+					array[winPositions[index][1]].includes("LUNA") &&
+					array[winPositions[index][2]].includes("LUNA")
+				) {
+					alert(
+						"HA GANADO LUNA!!!! ENHORABUENA!!!!!!!!!! Pulse New Game para empezar otro partido"
+					);
+					turnOffBoard();
+				}
 			}
 		}
-		return null;
-	}
+	};
+	useEffect(() => {
+		calculateWinner(positions);
+	}, [value]);
 
+	return (
 		<div className="container">
 			<h1 className={value ? "fas fa-sun" : "fas fa-moon"}>
 				<h1>{value ? "es el turno de sol" : "es el turno de luna"}</h1>
@@ -61,9 +88,11 @@ const Board = () => {
 						if (value1 == false) {
 							setValue(!value);
 							setValue1(true);
-							positions.splice(0, 1, value);
-							calculateWinner(positions);
-							console.log(winner);
+							if (value == true) {
+								positions.splice(0, 1, "SOL");
+							} else if (value == false) {
+								positions.splice(0, 1, "LUNA");
+							}
 						}
 					}}>
 					<PrintValue value={value} />
@@ -74,9 +103,11 @@ const Board = () => {
 						if (value2 == false) {
 							setValue(!value);
 							setValue2(true);
-							positions.splice(1, 1, value);
-							calculateWinner(positions);
-							console.log(winner);
+							if (value == true) {
+								positions.splice(1, 1, "SOL");
+							} else if (value == false) {
+								positions.splice(1, 1, "LUNA");
+							}
 						}
 					}}>
 					<PrintValue value={value} />
@@ -87,9 +118,11 @@ const Board = () => {
 						if (value3 == false) {
 							setValue(!value);
 							setValue3(true);
-							positions.splice(2, 1, value);
-							calculateWinner(positions);
-							console.log(winner);
+							if (value == true) {
+								positions.splice(2, 1, "SOL");
+							} else if (value == false) {
+								positions.splice(2, 1, "LUNA");
+							}
 						}
 					}}>
 					<PrintValue value={value} />
@@ -102,9 +135,11 @@ const Board = () => {
 						if (value4 == false) {
 							setValue(!value);
 							setValue4(true);
-							positions.splice(3, 1, value);
-							calculateWinner(positions);
-							console.log(winner);
+							if (value == true) {
+								positions.splice(3, 1, "SOL");
+							} else if (value == false) {
+								positions.splice(3, 1, "LUNA");
+							}
 						}
 					}}>
 					<PrintValue value={value} />
@@ -115,9 +150,11 @@ const Board = () => {
 						if (value5 == false) {
 							setValue(!value);
 							setValue5(true);
-							positions.splice(4, 1, value);
-							calculateWinner(positions);
-							console.log(winner);
+							if (value == true) {
+								positions.splice(4, 1, "SOL");
+							} else if (value == false) {
+								positions.splice(4, 1, "LUNA");
+							}
 						}
 					}}>
 					<PrintValue value={value} />
@@ -128,9 +165,11 @@ const Board = () => {
 						if (value6 == false) {
 							setValue(!value);
 							setValue6(true);
-							positions.splice(5, 1, value);
-							calculateWinner(positions);
-							console.log(winner);
+							if (value == true) {
+								positions.splice(5, 1, "SOL");
+							} else if (value == false) {
+								positions.splice(5, 1, "LUNA");
+							}
 						}
 					}}>
 					<PrintValue value={value} />
@@ -143,10 +182,11 @@ const Board = () => {
 						if (value7 == false) {
 							setValue(!value);
 							setValue7(true);
-							positions.splice(6, 1, value);
-							calculateWinner(positions);
-
-							console.log(winner);
+							if (value == true) {
+								positions.splice(6, 1, "SOL");
+							} else if (value == false) {
+								positions.splice(6, 1, "LUNA");
+							}
 						}
 					}}>
 					<PrintValue value={value} />
@@ -157,10 +197,11 @@ const Board = () => {
 						if (value8 == false) {
 							setValue(!value);
 							setValue8(true);
-							positions.splice(7, 1, value);
-							calculateWinner(positions);
-
-							console.log(winner);
+							if (value == true) {
+								positions.splice(7, 1, "SOL");
+							} else if (value == false) {
+								positions.splice(7, 1, "LUNA");
+							}
 						}
 					}}>
 					<PrintValue value={value} />
@@ -171,10 +212,11 @@ const Board = () => {
 						if (value9 == false) {
 							setValue(!value);
 							setValue9(true);
-							positions.splice(8, 1, value);
-							calculateWinner(positions);
-
-							console.log(winner);
+							if (value == true) {
+								positions.splice(8, 1, "SOL");
+							} else if (value == false) {
+								positions.splice(8, 1, "LUNA");
+							}
 						}
 					}}>
 					<PrintValue value={value} />
@@ -183,5 +225,4 @@ const Board = () => {
 		</div>
 	);
 };
-
 export default Board;

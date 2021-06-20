@@ -19,15 +19,14 @@ function MyModal(props) {
 				<Modal.Body className="show-grid bg-warning">
 					<Container>
 						<Row>
-							<Col md={6}>
-								<input
-									type="text"
-									placeholder="Player SUN"></input>
+							<Col className="text-center" md={4}>
+								Player Sun
 							</Col>
-							<Col md={6}>
-								<input
-									type="text"
-									placeholder="Player MOON"></input>
+							<Col className="text-center" md={4}>
+								VS
+							</Col>
+							<Col className="text-center" md={4}>
+								Player Moon
 							</Col>
 						</Row>
 					</Container>
@@ -48,7 +47,7 @@ const App = () => {
 	return (
 		<>
 			<div className="d-flex justify-content-between">
-				<h1>lalala</h1>
+				<h1>Pasadlo bieeeeen!!</h1>
 				<Button
 					variant="danger"
 					onClick={() => {
@@ -56,7 +55,7 @@ const App = () => {
 					}}>
 					New game
 				</Button>
-				<h1>lalala</h1>
+				<h1>Que gane el mejor!</h1>
 			</div>
 
 			<MyModal show={modalShow} onHide={() => setModalShow(false)} />
